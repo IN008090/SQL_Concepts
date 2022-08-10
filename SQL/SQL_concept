@@ -1,0 +1,38 @@
+---------------------------------MySQL-Structure Query-----------------------------------------------
+
+
+create database oppo_India; /* First create the database */
+use oppo_India;  /* To activate the database 'use' keyword used followed by database name*/
+create table SMT_dept (       /* Create the table in the database*/
+		serial_no INT auto_increment,   /* The serial no can be automated with  the keyword-auto_increment*/
+                floor VARCHAR(35) not null,  /*non null keyword is used where no value should remain empty  */
+                dept VARCHAR(35) default 'undecided',  /* If any value is left ideal it will mention 'undecided'*/
+                head VARCHAR(35),  /* VARCHAR optimised the memory in the table while if we use CHAR  it reserved all the vacant memory*/
+                PRIMARY KEY(serial_no)   /* Use of PRIMARY KEY for the serial_no it is mandatory to use it.*/
+                    );
+select*from SMT_dept; 
+insert into SMT_dept values 
+			(1,'SMT_JO301','SMT','VAIBHAV'),
+                        (2,'SMT_JO509','ASSEMBLY','ARUN_KUMAR'),
+                        (3,'SMT_JO511','SUB_ASSEMBLY','NARENDAR_SINGH'),
+                        (4,'SMT_JO508','TESTING','SHWETAMBER');
+desc SMT_dept;   /* desc keyword is  used to show the feed attribute data */
+drop table SMT_dept;  /* To  drop the table*/
+
+insert into SMT_dept (floor,head) values       /* To insert the record in the dataset*/
+					('SMTJO302','Rajesh'),   /* Here dept is not mention as by default mention  as undecided*/
+                                        ('SMTJO305','Smitha'),
+                                        ('SMTJO309','Nidhi');
+alter table SMT_dept add location  VARCHAR(35);  /* To add more column alter keyword is used */
+alter table SMT_dept drop column location;  /* To DROP the column alter  drop column keyword */
+update SMT_dept set head ='Tiger' where serial_no =4;  /* To update the record followed with the primary key word*/
+update SMT_dept set dept='DOWNLOADING', head= 'Bill' where serial_no=5;
+/* SELECT keyword uses*/
+select floor from SMT_dept;   /* To check the particular column */
+select dept, head from SMT_dept order by dept,head desc;   /*  To choose two or more column simuntanely */
+select  dept from  SMT_dept order by dept asc;  /* Arrange data in ascending order*/
+select dept from SMT_dept order by dept desc; /* Arrange data  in decending order*/
+select * from SMT_dept;  
+select * from SMT_dept limit 4;  /*' It limit the data till 4 serial no*/
+select dept,head, serial_no from SMT_dept order by serial_no asc;  /* To display  the required  attribute */
+select * from SMT_dept where serial_no >=6 limit 5;  /* To limit the serial no */ 
